@@ -1,6 +1,6 @@
 # Solving OpenAI Gymnasium Environments via Reinforcement Learning
 
-Hi :smiley:! This repo is a collection of RL algorithms implemented from scratch using PyTorch with the aim of solving a variety of environments from the Gymnasium library. The purpose is to provide both a theoretical and practical understanding of the principles behind reinforcement learning to someone with little to no experience in machine learning :grinning:. 
+Hi there :smiley:! This repo is a collection of RL algorithms implemented from scratch using PyTorch with the aim of solving a variety of environments from the Gymnasium library :boom:. The purpose is to provide both a theoretical and practical understanding of the principles behind reinforcement learning to someone with little to no experience in machine learning :sunglasses: :pinching_hand: 🕶️ . 
 
 ## Usage
 
