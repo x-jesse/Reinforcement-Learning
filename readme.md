@@ -46,10 +46,10 @@ $$A_t\sim\pi(S_t)$$
 
 Additionally, it is useful to define the probability of selecting a specific action at a given state, written as: 
 
-$p(A_t)=\pi(A_t|S_t)$
+$$p(A_t)=\pi(A_t|S_t)$$
 
 Or more generally, defining the probability function for all actions at any state:
 
-$p(a)=\pi(a|s)$
+$$p(a)=\pi(a|s)$$
 
 Next, we would to like to consider the cumulative reward obtained from a series of actions, also called the *return*.
