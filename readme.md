@@ -38,11 +38,11 @@ We begin by defining the state, action, and reward at some timestep $t$ to be $S
 
 We define the policy $\pi$ that the agent uses to select its actions as a function of state $\pi(s)$, where the action $A_t$ is selected by passing the current state $S_t$ into $\pi$. 
 
-$A_t=\pi(S_t)$
+$$A_t=\pi(S_t)$$
 
 Here we can also make a distinction between *deterministic* and *stochastic* policies. Deterministic policies will always return the same action given the same state as input. Stochastic policies introduce a level of randomness - for a given state, a stochastic policy is not guaranteed to return the same action every time. A truly stochastic policy will return a random action for any given state. Since we mainly work with stochastic policies, we often define the policy function $\pi$ as a probability distribution across all possible actions, rather than a deterministic result. To compute an action for a state, we sample from the policy:
 
-$A_t\sim\pi(S_t)$
+$$A_t\sim\pi(S_t)$$
 
 Additionally, it is useful to define the probability of selecting a specific action at a given state, written as: 
 
