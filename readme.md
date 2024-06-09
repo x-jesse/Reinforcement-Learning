@@ -6,7 +6,7 @@ Hi there :smiley:! This repo is a collection of RL algorithms implemented from s
 
 ## Background
 
-Given the complexity and breadth that many reinforcement learning algorithms cover, the topics introduced in this section will provide a high-level coverage of the basic terminology and fundamental concepts used in RL. Detailed explanations of each algorithm can be found in their respective folders. 
+Given the complexity and breadth that many reinforcement learning algorithms cover, the topics introduced in this section will provide a high-level coverage of the basic terminology and fundamental concepts used in RL. Detailed explanations of each algorithm can be found in their respective folders :sleepy:. 
 
 ### What is RL?
 
