@@ -1,8 +1,6 @@
 import gymnasium as gym
 import math
-import numpy as np
 import random
-import sys
 from collections import deque, namedtuple
 
 import torch
@@ -10,6 +8,8 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 
+# we define information about our state + transition in a namedtuple
+# 
 TransitionState = namedtuple('TransitionState', 
                              ('state', 'action', 'next_state', 'reward'))
 
