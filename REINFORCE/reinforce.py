@@ -121,6 +121,8 @@ for n_epoch in range(max_eps):
         # always selecting the action with the highest probability won't lead to exploration
         action_distr = Categorical(logits=logits)
         action = action_distr.sample()
+
+        # tracks our actions and log probabilities
         actions.append(action)
         saved_log_probs.append(action_distr.log_prob(action))
         
@@ -133,9 +135,12 @@ for n_epoch in range(max_eps):
         if terminated or truncated:
             break
     
-    total_rewards = deque()
+    # discount factor hyperparameter - typically set to somewhere around ~1
+    # (but not greater than 1)
     gamma = 0.99
     discounted_reward = 0
+    total_rewards = deque()
+
     for r in rewards[::-1]:
         discounted_reward = r + gamma * discounted_reward
         total_rewards.appendleft(discounted_reward)

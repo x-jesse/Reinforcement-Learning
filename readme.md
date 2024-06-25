@@ -22,7 +22,11 @@ Hi there 👋😃! This repo is a collection of RL algorithms implemented from s
 
 TODO
 
+If on Mac/Linux:
 ```
+python -m venv ./venv
+source venv/bin/activate 
+pip install -r requirements.txt
 ```
 
 ## Introduction
