@@ -4,6 +4,19 @@ Hi there :smiley:! This repo is a collection of RL algorithms implemented from s
 
 ## Table of Contents
 
+1. [Background](#background)
+    - [What is RL](#what-is-rl)
+    - [The Agent, State, and Environment](#the-agent-state-and-environment)
+    - [The RL Problem](#the-rl-problem)
+2. [Definitions](#definitions)
+    - [State, Action, and Reward]()
+    - [Value and Policy]()
+    - [Policy Gradient Theorem]()
+3. [Algorithms]
+    - [Monte-Carlo Policy Gradient (REINFORCE)]()
+    - [Q-Learning & DDQN]()
+    - [PPO]()
+    - [Actor-Critic & A2C]()
 
 ## Usage
 
