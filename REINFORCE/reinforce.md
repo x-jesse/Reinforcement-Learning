@@ -1,5 +1,12 @@
 # Monte-Carlo Policy Gradients
 
+## Introduction
+
+This md file is intended to be read in conjunction with the code. It'll serve as a reference containing more detail and visual explanations for what's happening at a technical level.
+
+
+## Policy Gradient Theorem
+
 We will begin with the derivation of the policy gradient theorem from first principles. To update our policy in a way that converges to optimality, we are interested in obtaining the policy gradient with respect to our parameters. For that purpose, we define an objective function $J$ as substitute for the true value function of a given policy. Since we want to maximize value, it makes sense to perform gradient ascent on this function.
 
 $$J(\theta)=v_{\pi_\theta}(s_0)$$
