@@ -3,7 +3,7 @@
     Welcome to REINFORCE (aka. Monte-Carlo Policy Gradients)!
     ===========================================================
 
-    REINFORCE is probably the equivalent of the "hello world" for reinforcement learning. 
+    REINFORCE is probably one of the "hello world"s for model-free reinforcement learning. 
     Though it's not widely used today, it's one of the foundational algorithms used in RL - 
     understanding it is crucial to learning what the more complex algorithms do. The
     implementation is not too long - just <100 lines of code! But there are some nuances that

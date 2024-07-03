@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 ## Introduction
 
-Given the complexity and breadth that many reinforcement learning algorithms cover, the topics introduced in this section will provide a high-level coverage of the basic terminology and fundamental concepts used in RL. Certain concepts that are important, but potentially unnecessary for a basic understanding have unfortunately been cut - there simply isn't enough space in single readme. For those interested, I highly recommend checking out some other sources 😪 :
+Given the complexity and breadth that many reinforcement learning algorithms cover, the topics introduced in this section will provide a high-level coverage of the basic terminology and fundamental concepts used in RL. Certain concepts that are important, but potentially unnecessary for a basic understanding have unfortunately been cut. For those interested, I highly recommend checking out some other sources 😪 :
 - [An Introduction to Reinforcement Learning]()
 - [Spinning Up in Deep RL!](https://spinningup.openai.com/en/latest/)
 
@@ -57,11 +57,7 @@ The duration of time from the agent's inception to it reaching a terminal state 
 
 The central problem that RL tries to solve is a question of optimization: how can the agent maximize the amount the of reward it receives? In other words, what is the optimal course of action that agent should take to maximize the reward? The decision model that the agent uses to determine its course of action in any given state is called the ***policy***. By extension, the decision model that yields the highest reward is called the ***optimal policy***. Our goal is to find this optimal policy - if we can determine the optimal policy, or at least a close approximation, then we will have successfully solved our environment 💥.
 
-
-
 ## Definitions
-
-The section of the document will be dedicated to defining key functions and notation used in RL algorithms. The applicability of each will not be discussed here, please see the individual algorithms for their usage.
 
 We begin by defining the state, action, and reward at some timestep $t$ to be $S_t, A_t,$ and $R_t$, respectively. In general, when the agent takes some action $A_t$ it has a fixed probability of moving to some state $S_{t+1}$ and receiving a reward $R_{t}$. It is important to note that by this definition, the reward is received upon *leaving* a state, and not just reaching it.
 
@@ -69,7 +65,9 @@ We define the policy $\pi$ that the agent uses to select its actions as a functi
 
 $$A_t=\pi(S_t)$$
 
-Here we can also make a distinction between *deterministic* and *stochastic* policies. Deterministic policies will always return the same action given the same state as input. Stochastic policies introduce a level of randomness - for a given state, a stochastic policy is not guaranteed to return the same action every time. A truly stochastic policy will return a random action for any given state. Since we mainly work with stochastic policies, we often define the policy function $\pi$ as a probability distribution across all possible actions, rather than a deterministic result. To compute an action for a state, we sample from the policy:
+Here we can also make a distinction between *deterministic* and *stochastic* policies. Deterministic policies will always return the same action given the same state as input. Stochastic policies introduce a level of randomness - for a given state, a stochastic policy is not guaranteed to return the same action every time. A truly stochastic policy will return a random action for any given state. 
+
+Since we mainly work with stochastic policies, we often define the policy function $\pi$ as a probability distribution across all possible actions, rather than a deterministic result. To compute an action for a state, we sample from the policy:
 
 $$A_t\sim\pi(S_t)$$
 
@@ -77,24 +75,35 @@ Additionally, it is useful to define the probability of selecting a specific act
 
 $$p(A_t)=\pi(A_t|S_t)$$
 
-Or more generally, defining the probability function for all actions at any state:
+Or more generally:
 
 $$p(a)=\pi(a|s)$$
 
 Next, we would to like to consider the cumulative reward obtained from a series of actions, also called the *return*. The return will provide us with an indication of how "good" a series of actions were. This is especially useful if we have some way of predicting the future return after taking an action - we can measure how much the expected reward will be from looking the predicted return.
 
-Generally, the return over $N$ timesteps is defined as
+Generally, the return $G$ over $N$ timesteps is defined as
 
 $$G=\sum_{t=0}^NR_t$$
 
-However, for our purposes, it is useful to consider a *discounted* version of the return. 
+However, for our purposes, it is sometimes useful to consider a *discounted* version of the return:
 
+$$G=\sum_{t=0}^N\gamma^t R_t,\:\gamma\in[0, 1]$$
+
+We introduce an additional constant $\gamma$ that gradually *decreases* the value of the reward over time. We can see that for large values of $t$, $\gamma^t$ will become very small and multiplying by the reward will yield only a very small number - that is, the contribution of rewards far in the future to the overall sum will be very small. 
+
+There are two main reasons to do this:
+
+1. We can encourage our agent to priortize present gain over future reward. If our discount factor is >=1, our agent will give equal or more consideration to future reward, which might not result in it taking the optimal action for the current state.
+
+2. We ensure that our reward series will converge. For environments where the termination condition is not defined and the agent may continue indefinitely, it is important to ensure that our return does not approach infinity.
 
 ## Algorithms
 
 ### Monte-Carlo Policy Gradients (REINFORCE)
 
 ### Q-Learning & DDQN
+
+In RL, there is a tradeoff between *exploration* and *exploitation*. Initially, we want our agent to *explore* different options. By maximizing exploration in the early stages, we can guarantee that our agent will find the best possible action with the highest reward. 
 
 ### PPO
 
