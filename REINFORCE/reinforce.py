@@ -27,6 +27,7 @@
 """
 
 import gymnasium as gym
+import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.nn as nn
@@ -91,15 +92,31 @@ policy.to(device)
 
 # our agent should perform pretty well after 200 iterations
 # in other words, our policy has converged after 200 episodes
-max_eps = 200
+max_eps = 100
 
 # we won't discuss optimizers here - just think of them as a function that performs backpropagation
 # Optional reading: 
 optimizer = torch.optim.Adam(policy.parameters(), lr=0.01)
 
+# plotting
+plot_info = []
+
 # training loop training loop training loop training loop 
 for n_epoch in range(max_eps):
     """
+
+    This is our training loop - the place where all the math happens. We'll
+    go through it in order, starting from policy initialization, to return calculation,
+    and finally gradient updating via backpropagation.
+
+    If you're not familiar with machine learning, feel free to skip this next paragraph.
+    If you are, I'd like to draw some connections between training neural networks in RL vs
+    other types of ML. There are many ways to train a neural network to perform certain tasks,
+    and RL does take advantage of that by using neural networks as a policy. However, unlike
+    some other types of ML, such as supervised learning, the loss calculation is not well-defined.
+    
+    In RL, we need to define our own metrics - and this is the challenge that many RL algorithms
+    try to tackle, by providing different ways for us to update our policies. 
     
     """
     cum_reward = 0
@@ -154,11 +171,15 @@ for n_epoch in range(max_eps):
         losses.append(-r * log_prob)
 
     loss = torch.cat(losses).sum()
-    print(n_epoch, cum_reward)
+    print(n_epoch, cum_reward, loss.item())
+    plot_info.append((n_epoch, cum_reward, loss.item()))
 
     optimizer.zero_grad()
     loss.backward()
     optimizer.step()
+
+np.save("ref", np.array(plot_info))
+torch.save(policy, "policy")
 
 env.close()
 

@@ -97,6 +97,10 @@ There are two main reasons to do this:
 
 2. We ensure that our reward series will converge. For environments where the termination condition is not defined and the agent may continue indefinitely, it is important to ensure that our return is finite and does not approach infinity.
 
+We can generalize the expression for our return to consider a broader sequence of actions. Instead of a specific, defined trajectory of actions, we can define our return as an expected value over the action probabilities. If we choose some starting state $S_0$, we can define the expected return from that state following some policy $\pi$ as:
+
+$$\mathbb E$$
+
 ## Algorithms
 
 ### Monte-Carlo Policy Gradients (REINFORCE)
@@ -108,3 +112,4 @@ In RL, there is a tradeoff between *exploration* and *exploitation*. Initially, 
 ### PPO
 
 ### Actor-Critic & A2C
+
