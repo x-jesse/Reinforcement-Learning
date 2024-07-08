@@ -201,15 +201,27 @@ for n_epoch in range(max_eps):
     """
 
     for r in rewards[::-1]:
+        # computes the discounted reward at that timestep
+        # assuming we have rewards = [1, 1, 1, 1]
+        # our total rewards would be [3.439, 2.71, 1.9, 1] representing all future rewards
+        # obtained by the agent starting from that timestep
         discounted_reward = r + gamma * discounted_reward
         total_rewards.appendleft(discounted_reward)
+    
     total_rewards = torch.tensor(total_rewards, device=device)
+    # normalizes the rewards
     total_rewards = (total_rewards - total_rewards.mean()) / total_rewards.std()
 
     states = torch.tensor(np.array(states), device=device)
     logits = policy(states)
     losses = []
+    """
+    
+    
+    """
     for log_prob, r in zip(saved_log_probs, total_rewards):
+        # we add the negative here because the optimizer expects us to perform gradient descent
+        # but we want ascent so we just flip our values around
         losses.append(-r * log_prob)
 
     loss = torch.cat(losses).sum()
