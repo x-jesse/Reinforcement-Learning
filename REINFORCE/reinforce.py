@@ -1,16 +1,30 @@
 """
     ===========================================================
-    Welcome to REINFORCE (aka. Monte-Carlo Policy Gradients)!
+    Welcome to REINFORCE (aka. Monte Carlo Policy Gradient)!
     ===========================================================
 
-    REINFORCE is probably one of the "hello world"s for model-free reinforcement learning. 
-    Though it's not widely used today, it's one of the foundational algorithms used in RL - 
-    understanding it is crucial to learning what the more complex algorithms do. The
+    REINFORCE is probably one of the simpler RL algorithms for model-free reinforcement learning,
+    but don't worry if it feels overwhelming at first. There's a lot of different concepts and
+    terminology used in ML/AI fields, and it takes a while to get used to them. Feel free to pull
+    up the glossary - I try to provide useful definitions and links to useful resources as much
+    as possible. :))
+
+    Though REINFORCE is not widely used today due to its limitations, developing a solid understanding 
+    of it is an excellent prerequisite to learning what the more complex algorithms do. The
     implementation is not too long - just <100 lines of code! But there are some nuances that
     require a bit of math to fully understand. 
 
     This section of the guide will serve as a deep-dive into the concepts and driving principles 
     behind the REINFORCE algorithm. 
+
+    REINFORCE, or Monte Carlo policy gradient, is a RL method based on gradient ascent. We want
+    to optimize our policy in the direction of maximal reward. The general process is:
+
+        1. Run an epoch, recording information as we go. This includes states, actions, and rewards.
+
+        2. After termination, we update our policy using *Policy Gradient Theorem*.
+
+        3. Repeat until convergence.
 
     Additional notes:
     - REINFORCE should not be confused with VPG (vanilla policy gradient). Though similar, they
@@ -53,9 +67,11 @@ https://gymnasium.farama.org/environments/classic_control/cart_pole/
 # Optional reading: https://en.wikipedia.org/wiki/Feedforward_neural_network
 class FeedForward(nn.Module):
     """
-    We begin with a simple neural network. This will serve as our policy - 
+    We begin with a simple PyTorch neural network. This will serve as our policy - 
     a way for us to sample actions. Initially, all the weights will be random;
-    our actions will be nonsensical and arbitrary. But as 
+    our actions will be nonsensical and arbitrary. But as we learn, our policy
+    will eventually converge to the optimal one, and our agent should consistently 
+    be able to achieve the maximum reward of 500.
 
     """
 
@@ -91,7 +107,7 @@ policy = FeedForward(env.observation_space.shape[0], env.action_space.n)
 policy.to(device)
 
 # our agent should perform pretty well after 200 iterations
-# in other words, our policy has converged after 200 episodes
+# in other words, our policy should converge after 200 episodes
 max_eps = 100
 
 # we won't discuss optimizers here - just think of them as a function that performs backpropagation
@@ -104,7 +120,6 @@ plot_info = []
 # training loop training loop training loop training loop 
 for n_epoch in range(max_eps):
     """
-
     This is our training loop - the place where all the math happens. We'll
     go through it in order, starting from policy initialization, to return calculation,
     and finally gradient updating via backpropagation.
@@ -139,24 +154,47 @@ for n_epoch in range(max_eps):
         action_distr = Categorical(logits=logits)
         action = action_distr.sample()
 
-        # tracks our actions and log probabilities
+        # tracks our actions and the sampled log probabilities from our policy
+        # log probabilities are a useful optimization to have, since they reduce computation time
         actions.append(action)
         saved_log_probs.append(action_distr.log_prob(action))
         
+        # env.step() tells the environment what action we want to take - given by action.item()
         new_state, reward, terminated, truncated, info = env.step(action.item())
+
+        # track our states, rewards, and cumulative reward (return)
         states.append(new_state)
         rewards.append(reward)
         cum_reward += reward
         
-        state = new_state
+        # end the loop if our state is terminal
         if terminated or truncated:
             break
+        # update state
+        state = new_state
     
     # discount factor hyperparameter - typically set to somewhere around ~1
     # (but not greater than 1)
     gamma = 0.99
     discounted_reward = 0
     total_rewards = deque()
+
+    """
+    We want to compute our discounted reward here. Recall that for environments where
+    we can potentially have very high timesteps, we want our reward series to remain finite.
+    It would a problem for us if our return approached infinity, so we introduce a discount
+    factor. Strictly speaking, OpenAI Gymnasium has a built in condition that prevents episodes
+    from exceeding a certain length, so infinite-timestep episodes aren't really a concern. 
+    Empirically though, introducing a discount factor is beneficial to assist convergence
+    and decrease variance in our gradient computation, so there's no downside to including it.
+    
+    Our discounted return calculation takes the form of a repeated sum, looped starting from the
+    end of the rewards array:
+        
+        discounted_reward = r + gamma * discounted_reward
+
+    This might seem weird at first, since we usually calculate our 
+    """
 
     for r in rewards[::-1]:
         discounted_reward = r + gamma * discounted_reward
