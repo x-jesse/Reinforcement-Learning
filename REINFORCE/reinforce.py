@@ -216,7 +216,10 @@ for n_epoch in range(max_eps):
     logits = policy(states)
     losses = []
     """
-    
+    Here, we use policy gradient theorem to update our losses and our policy. The update rule is
+    actually incredibly simple - we just multiply our discounted return by the log probability of
+    the action at that timestep. The reason this works is proven via policy gradient theorem - the
+    derivation we did earlier.
     
     """
     for log_prob, r in zip(saved_log_probs, total_rewards):
