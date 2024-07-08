@@ -188,12 +188,16 @@ for n_epoch in range(max_eps):
     Empirically though, introducing a discount factor is beneficial to assist convergence
     and decrease variance in our gradient computation, so there's no downside to including it.
     
-    Our discounted return calculation takes the form of a repeated sum, looped starting from the
-    end of the rewards array:
-        
-        discounted_reward = r + gamma * discounted_reward
+    Our discounted return calculation takes the form of a repeated sum, looped over the reversed
+    rewards array:
+    
+        for r in rewards[::-1]:
+            discounted_reward = r + gamma * discounted_reward
 
-    This might seem weird at first, since we usually calculate our 
+    This might seem weird at first, since discounting happens in the forward direction - we
+    expect future values to have a lower value than current ones. However, this calculation is
+    for return, and not reward. The variable itself represents the discounted reward for some given
+    timestep up to the end state. In other words, it is a summation of values from there to the end.
     """
 
     for r in rewards[::-1]:
