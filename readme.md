@@ -7,6 +7,7 @@ Hi there 👋😃! This repo is a collection of RL algorithms implemented from s
 1. [Introduction](#introduction)
     - [What is RL](#what-is-rl)
     - [The Agent, State, and Environment](#the-agent-state-and-environment)
+    - [Exploration vs. Exploitation]()
     - [The RL Problem](#the-rl-problem)
 2. [Formal Definitions](#definitions)
     - [State, Action, and Reward]()
@@ -20,7 +21,7 @@ Hi there 👋😃! This repo is a collection of RL algorithms implemented from s
 
 ## Usage
 
-TODO
+TODO: Setup argparse for easy runtime access
 
 If on Mac/Linux:
 ```
