@@ -68,7 +68,7 @@ The central problem that RL tries to solve is a question of optimization: how ca
 
 There is a tradeoff between *exploration* and *exploitation* in RL. To find the optimal policy, our agent needs to strike a balance between *exploring* the environment and *exploiting* its experience. In other words, we need to choose when to try new things and when to take advantage of our learned knowledge. Our agent cannot spend all its time exploring, or else it will never get to use the knowledge it's learned. Likewise, it needs to explore to gain knowledge, since it starts off with no information about the environment. 
 
-Policies that only encourage exploitation are called *greedy* policies, since we are selecting our action based on the highest available reward. Sometimes, we want to select the actio with highest expected reward most of the time and explore occasionally. We refer to these policies as *epsilon-greedy* policies, since they select the "best" action (exploiting) with a probability of $\epsilon$ and a random action (exploring) with a probability of $1-\epsilon$. 
+Policies that only encourage exploitation are called *greedy* policies, since we are selecting our action based on the highest available reward. Sometimes, we want to select the action with highest expected reward most of the time and explore some of the time. We refer to these policies as *epsilon-greedy* policies, since they select the "best" action (exploiting) with a probability of $\epsilon$ and a random action (exploring) with a probability of $1-\epsilon$. 
 
 The exploration vs exploitation is a well-explored (haha) problem in RL, if you'd like to learn more, the [multi-armed bandit](https://en.wikipedia.org/wiki/Multi-armed_bandit) problem is a good place to start.
 
