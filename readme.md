@@ -70,7 +70,7 @@ There is a tradeoff between *exploration* and *exploitation* in RL. To find the 
 
 Policies that only encourage exploitation are called *greedy* policies, since we are selecting our action based on the highest available reward. Sometimes, we want to select the action with highest expected reward most of the time and explore some of the time. We refer to these policies as *epsilon-greedy* policies, since they select the "best" action (exploiting) with a probability of $\epsilon$ and a random action (exploring) with a probability of $1-\epsilon$. 
 
-The exploration vs exploitation is a well-explored (haha) problem in RL, if you'd like to learn more, the [multi-armed bandit](https://en.wikipedia.org/wiki/Multi-armed_bandit) problem is a good place to start.
+The exploration vs exploitation is a well-explored (haha) problem in RL. If you'd like to learn more, the [multi-armed bandit](https://en.wikipedia.org/wiki/Multi-armed_bandit) problem is a good place to start.
 
 ## Definitions
 
