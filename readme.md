@@ -49,15 +49,16 @@ RL has several key components that operate in a continuous cycle: the ***agent**
 Each time our agent acts, it may change its state in some way. (Eg. If Mario jumps, he will gain some upward velocity. If he tries to jump again while in the air - assuming no double jump - nothing will happen.) Moving to a state has the potential to give some reward. This results in general feedback loop of *state* $\rightarrow$ *action* $\rightarrow$ *reward* $\rightarrow$ *state* $\rightarrow$ *action* $\rightarrow$ ... If our agent manages to beat the level, we should give it a reward and terminate the process 🍿. 
 
 <p align="center">
-<img src="./visuals/rl-cycle.png" width=400 style="display: block;">
-<em>More specifically, the agent will select some action and act on it. The environment will respond by giving some reward and/or changing state.</em> 
+<img src="./visuals/rl-cycle.png" width=400>
 </p>
+
+>More specifically, the agent will select some action and act on it. The environment will respond by giving some reward and/or changing state.
 
 States that result in termination are called *terminal states*. Termination usually means the agent has either successfully solved the task or performed so poorly that it has no way of recovering. Consider an example of teaching an RL agent to play a video game - if our agent dies at any point, it has no way of continuing the game. In other words, it has reached a terminal state 💀.
 
 <p align="center"><img src="./visuals/giphy.webp" width=400></p>
 
-The duration of time from the agent's inception to it reaching a terminal state is called an ***episode***. In the video game example, an episode may correlate to the start of a level until the agent either completes the level or dies in the process. Upon reaching a terminal state, we then place the agent back at the beginning for it to repeat the process again, until it learns how to consistently complete the task 🥂. 
+The duration of time from the agent's inception to it reaching a terminal state is called an ***episode***. In the Mario example, an episode may correlate to the start of a level until the agent either completes the level or dies in the process. Upon reaching a terminal state, we then place the agent back at the beginning for it to repeat the process again, until it learns how to consistently complete the task 🥂. 
 
 ### The RL Problem
 
@@ -65,7 +66,11 @@ The central problem that RL tries to solve is a question of optimization: how ca
 
 ### Exploration vs Exploitation
 
-There is a tradeoff between *exploration* and *exploitation* in RL. To find the optimal policy, our agent needs strike a balance between *exploring* the environment and *exploiting* its learned experience. Our agent cannot 
+There is a tradeoff between *exploration* and *exploitation* in RL. To find the optimal policy, our agent needs to strike a balance between *exploring* the environment and *exploiting* its experience. In other words, we need to choose when to try new things and when to take advantage of our learned knowledge. Our agent cannot spend all its time exploring, or else it will never get to use the knowledge it's learned. Likewise, it needs to explore to gain knowledge, since it starts off with no information about the environment. 
+
+Policies that only encourage exploitation are called *greedy* policies, since we are selecting our action based on the highest available reward. Sometimes, we want to select the actio with highest expected reward most of the time and explore occasionally. We refer to these policies as *epsilon-greedy* policies, since they select the "best" action (exploiting) with a probability of $\epsilon$ and a random action (exploring) with a probability of $1-\epsilon$. 
+
+The exploration vs exploitation is a well-explored (haha) problem in RL, if you'd like to learn more, the [multi-armed bandit](https://en.wikipedia.org/wiki/Multi-armed_bandit) problem is a good place to start.
 
 ## Definitions
 
