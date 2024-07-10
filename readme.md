@@ -5,7 +5,7 @@ Hi there 👋😃! This repo is a collection of RL algorithms implemented from s
 ## Table of Contents 📓
 
 1. [Introduction](#introduction)
-    - [What is RL](#what-is-rl)
+    - [What is RL?](#what-is-rl)
     - [The Agent, State, and Environment](#the-agent-state-and-environment)
     - [Exploration vs. Exploitation](#exploration-vs-exploitation)
     - [The RL Problem](#the-rl-problem)
@@ -14,8 +14,10 @@ Hi there 👋😃! This repo is a collection of RL algorithms implemented from s
     - [Value and Action-value]()
     - [Policy Gradient Theorem]()
 3. [Algorithms](#algorithms)
+    - [Q-Learning]()
+    - [SARSA]()
     - [Monte-Carlo Policy Gradient (REINFORCE)](#monte-carlo-policy-gradients-reinforce)
-    - [Q-Learning & DDQN](#q-learning--ddqn)
+    - [DDQN]()
     - [PPO](#ppo)
     - [Actor-Critic & A2C](#actor-critic--a2c)
 
@@ -118,9 +120,13 @@ $$\mathbb E$$
 
 ## Algorithms
 
+### Q-Learning
+
+### SARSA
+
 ### Monte-Carlo Policy Gradients (REINFORCE)
 
-### Q-Learning & DDQN
+### DDQN
 
 In RL, there is a tradeoff between *exploration* and *exploitation*. Initially, we want our agent to *explore* different options. By maximizing exploration in the early stages, we can guarantee that our agent will find the best possible action with the highest reward. 
 
