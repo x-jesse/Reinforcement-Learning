@@ -1,3 +1,13 @@
+<style>
+    img + em {
+        font-size: 8pt;
+        text-align: center;
+        line-height: -10;
+    }
+    img {
+        display: block;
+    }
+</style>
 # Solving OpenAI Gymnasium Environments via Reinforcement Learning
 
 Hi there 👋😃! This repo is a collection of RL algorithms implemented from scratch using PyTorch with the aim of solving a variety of environments from the Gymnasium library. The purpose is to provide both a theoretical and practical understanding of the principles behind reinforcement learning to someone with little to no experience in machine learning 😎🤏 🕶️🤏 😉. 
@@ -122,14 +132,3 @@ In RL, there is a tradeoff between *exploration* and *exploitation*. Initially, 
 ### PPO
 
 ### Actor-Critic & A2C
-
-<style>
-    img + em {
-        font-size: 8pt;
-        text-align: center;
-        line-height: -10;
-    }
-    img {
-        display: block;
-    }
-</style>
