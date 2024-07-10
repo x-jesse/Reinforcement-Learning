@@ -1,13 +1,3 @@
-<style>
-    img + em {
-        font-size: 8pt;
-        text-align: center;
-        line-height: -10;
-    }
-    img {
-        display: block;
-    }
-</style>
 # Solving OpenAI Gymnasium Environments via Reinforcement Learning
 
 Hi there 👋😃! This repo is a collection of RL algorithms implemented from scratch using PyTorch with the aim of solving a variety of environments from the Gymnasium library. The purpose is to provide both a theoretical and practical understanding of the principles behind reinforcement learning to someone with little to no experience in machine learning 😎🤏 🕶️🤏 😉. 
@@ -59,7 +49,7 @@ RL has several key components that operate in a continuous cycle: the ***agent**
 Each time our agent acts, it may change its state in some way. (Eg. If Mario jumps, he will gain some upward velocity. If he tries to jump again while in the air - assuming no double jump - nothing will happen.) Moving to a state has the potential to give some reward. This results in general feedback loop of *state* $\rightarrow$ *action* $\rightarrow$ *reward* $\rightarrow$ *state* $\rightarrow$ *action* $\rightarrow$ ... If our agent manages to beat the level, we should give it a reward and terminate the process 🍿. 
 
 <p align="center">
-<img src="./visuals/rl-cycle.png" width=400>
+<img src="./visuals/rl-cycle.png" width=400 style="display: block;">
 <em>More specifically, the agent will select some action and act on it. The environment will respond by giving some reward and/or changing state.</em> 
 </p>
 
