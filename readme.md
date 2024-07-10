@@ -32,8 +32,8 @@ pip install -r requirements.txt
 
 ## Introduction
 
-Given the complexity and breadth that many reinforcement learning algorithms cover, the topics introduced in this section will provide a high-level coverage of the basic terminology and fundamental concepts used in RL. Certain concepts that are important, but potentially unnecessary for a basic understanding have unfortunately been cut. For those interested, I highly recommend checking out some other sources 😪 :
-- [An Introduction to Reinforcement Learning]()
+Reinforcement learning is a broad topic - and I can't possibly fit that much information in what is supposed to be an "Intro to RL". So unfortunately, some topics that are important, but potentially unnecessary for a basic understanding have been cut 😢. For those interested, I highly recommend checking out some other sources 😪 :
+- [An Introduction to Reinforcement Learning](http://incompleteideas.net/book/the-book-2nd.html)
 - [Spinning Up in Deep RL!](https://spinningup.openai.com/en/latest/)
 
 ### What is RL?
@@ -42,11 +42,16 @@ Reinforcement learning, as the name suggests, is the process by which an agent l
 
 ### The Agent, State, and Environment
 
-RL has several key components that operate in a continuous cycle: the ***agent***, which will perform some action; the ***state***, which represents the current status of the agent relative to its environment; and the ***environment***, which respresents the surrounding world that our agent will act in. In the simple example of a maze navigation robot, the agent would be our robot, the state would represent the current position of the robot in our maze, and the environment would be the maze itself 🌲.
+RL has several key components that operate in a continuous cycle: the ***agent***, which will perform some action; the ***state***, which represents the current status of the agent relative to its environment; and the ***environment***, which respresents the surrounding world that our agent will act in. To take a more familiar example, imagine teaching an RL agent to play Mario 🪠. Your agent would be the character - Mario, your envrionment would be the level itself, and your state might track information about Mario's current position, HP, velocity, etc. 🎮
 
-<p align="center"><img src="./visuals/rl-cycle.png" width=400></p>
+<p align="center"><img src="./visuals/super-mario.png" width=400></p>
 
-Each time our agent acts, it may change its state in some way. (Eg. If our robot moves up through maze, its position will change unless it hits a wall. If it continues to try to move upwards, it will be impeded by the wall and its state will not change.) Moving to a state has the potential to give some reward. If our robot manages to solve the maze - if it manages to reach the state corresponding to the exit of the maze - we should give it a reward and terminate the process 🍿. 
+Each time our agent acts, it may change its state in some way. (Eg. If Mario jumps, he will gain some upward velocity. If he tries to jump again while in the air - assuming no double jump - nothing will happen.) Moving to a state has the potential to give some reward. This results in general feedback loop of *state* $\rightarrow$ *action* $\rightarrow$ *reward* $\rightarrow$ *state* $\rightarrow$ *action* $\rightarrow$ ... If our agent manages to beat the level, we should give it a reward and terminate the process 🍿. 
+
+<p align="center">
+<img src="./visuals/rl-cycle.png" width=400>
+<em>More specifically, the agent will select some action and act on it. The environment will respond by giving some reward and/or changing state.</em> 
+</p>
 
 States that result in termination are called *terminal states*. Termination usually means the agent has either successfully solved the task or performed so poorly that it has no way of recovering. Consider an example of teaching an RL agent to play a video game - if our agent dies at any point, it has no way of continuing the game. In other words, it has reached a terminal state 💀.
 
@@ -56,7 +61,11 @@ The duration of time from the agent's inception to it reaching a terminal state 
 
 ### The RL Problem
 
-The central problem that RL tries to solve is a question of optimization: how can the agent maximize the amount the of reward it receives? In other words, what is the optimal course of action that agent should take to maximize the reward? The decision model that the agent uses to determine its course of action in any given state is called the ***policy***. By extension, the decision model that yields the highest reward is called the ***optimal policy***. Our goal is to find this optimal policy - if we can determine the optimal policy, or at least a close approximation, then we will have successfully solved our environment 💥.
+The central problem that RL tries to solve is a question of optimization: how can the agent maximize the amount the of reward it receives? In other words, what is the optimal course of action that the agent should take to maximize the reward? The decision model that the agent uses to determine its course of action in any given state is called the ***policy***. By extension, the decision model that yields the highest reward is called the ***optimal policy***. Our goal is to find this optimal policy - if we can determine the optimal policy, or at least a close approximation, then we will have successfully solved our environment 💥.
+
+### Exploration vs Exploitation
+
+There is a tradeoff between *exploration* and *exploitation* in RL. To find the optimal policy, our agent needs strike a balance between *exploring* the environment and *exploiting* its learned experience. Our agent cannot 
 
 ## Definitions
 
@@ -114,3 +123,13 @@ In RL, there is a tradeoff between *exploration* and *exploitation*. Initially, 
 
 ### Actor-Critic & A2C
 
+<style>
+    img + em {
+        font-size: 8pt;
+        text-align: center;
+        line-height: -10;
+    }
+    img {
+        display: block;
+    }
+</style>

@@ -1,2 +1,2 @@
-# Proximal Policy Optimzation
+# Proximal Policy Optimzation (PPO)
 
