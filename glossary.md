@@ -9,7 +9,69 @@ PyTorch Documentation
 https://pytorch.org/docs/stable/index.html
 
 
-# Reinforcement Learning
+## Reinforcement Learning
+
+Agent - 
+
+State - 
+
+Environment - 
+
+Reward - 
+
+Return - 
+
+Discounting - 
+
+Trajectory - 
+
+State-value - 
+
+Action-value - 
+
+Policy - 
+
+On-policy - 
+
+Off-policy -
+
+Model - 
+
+Model-free - 
+
+Model-based
+
+Markov Decision Process (MDP) - 
+
+Markov Property - 
+
+Monte Carlo Method - 
+
+Bootstrapping - 
+
+Temporal Difference Learning - 
+
+
+## Machine Learning
+
+Machine Learning - 
+
+Neural Network - 
+
+Backpropagation - 
+
+Loss - 
+
+## Statistics & Probability
+
+Gaussian (Normal) Distribution - 
+
+Kullback-Leibler (KL) Divergence - 
+
+
+
+
+
 
 
 

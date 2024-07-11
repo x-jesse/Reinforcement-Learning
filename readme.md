@@ -11,7 +11,7 @@ Hi there 👋😃! This repo is a collection of RL algorithms implemented from s
     - [The RL Problem](#the-rl-problem)
 2. [Formal Definitions](#definitions)
     - [State, Action, and Reward]()
-    - [Value and Action-value]()
+    - [State-Value and Action-Value]()
     - [Policy Gradient Theorem]()
 3. [Algorithms](#algorithms)
     - [Q-Learning]()
