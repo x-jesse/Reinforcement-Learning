@@ -98,7 +98,7 @@ elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
 
 # creates the environment
 env = gym.make('CartPole-v1', render_mode=None)
-state, info = env.reset()
+state, _ = env.reset()
 
 # initializes our policy
 policy = FeedForward(env.observation_space.shape[0], env.action_space.n)
@@ -178,7 +178,7 @@ for n_epoch in range(max_eps):
         saved_log_probs.append(action_distr.log_prob(action))
         
         # env.step() tells the environment what action we want to take - given by action.item()
-        new_state, reward, terminated, truncated, info = env.step(action.item())
+        new_state, reward, terminated, truncated, _ = env.step(action.item())
 
         # track our states, rewards, and cumulative reward (return)
         states.append(new_state)
