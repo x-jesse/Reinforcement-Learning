@@ -149,8 +149,8 @@ for n_epoch in range(max_eps):
     
     """
     cum_reward = 0 # we obv can't use the word return in python, so we'll call it cumulative reward instead
-    states, actions, rewards = [], [], []
-    saved_log_probs = []
+    states, rewards = [], []
+    saved_log_probs = [] # track the log probabilities of the actions we take
     state, info = env.reset()
 
     # loop until our episode terminates
@@ -174,7 +174,6 @@ for n_epoch in range(max_eps):
 
         # tracks our actions and the sampled log probabilities from our policy
         # log probabilities are a useful optimization to have, since they reduce computation time
-        actions.append(action)
         saved_log_probs.append(action_distr.log_prob(action))
         
         # env.step() tells the environment what action we want to take - given by action.item()

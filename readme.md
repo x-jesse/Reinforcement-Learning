@@ -14,8 +14,8 @@ Hi there 👋😃! This repo is a collection of RL algorithms implemented from s
     - [State-Value and Action-Value]()
     - [Policy Gradient Theorem]()
 3. [Algorithms](#algorithms)
-    - [Q-Learning]()
-    - [SARSA]()
+    - [Q-Learning](#q-learning)
+    - [SARSA](#sarsa)
     - [Monte-Carlo Policy Gradient (REINFORCE)](#monte-carlo-policy-gradients-reinforce)
     - [DDQN]()
     - [PPO](#ppo)
@@ -35,7 +35,7 @@ pip install -r requirements.txt
 ## Introduction
 
 Reinforcement learning is a broad topic - and I can't possibly fit that much information in what is supposed to be an "Intro to RL". So unfortunately, some topics that are important, but potentially unnecessary for a basic understanding have been cut 😢. For those interested, I highly recommend checking out some other sources 😪 :
-- [An Introduction to Reinforcement Learning](http://incompleteideas.net/book/the-book-2nd.html)
+- [Reinforcement Learning: An Introduction](http://incompleteideas.net/book/the-book-2nd.html)
 - [Spinning Up in Deep RL!](https://spinningup.openai.com/en/latest/)
 
 ### What is RL?
@@ -96,7 +96,13 @@ Or more generally:
 
 $$p(a)=\pi(a|s)$$
 
-Next, we would to like to consider the cumulative reward obtained from a series of actions, also called the *return*. The return will provide us with an indication of how "good" a series of actions were. This is especially useful if we have some way of predicting the future return after taking an action - we can measure how much the expected reward will be from looking the predicted return.
+As we train our policy, we would eventually like it to be biased towards selecting the optimal action from any given state over other possibilities.
+
+Next, we would to like to consider the cumulative reward obtained from a series of actions, also called the *return*. For this purpose, it is useful to define the probability of selecting a series of actions, called a *trajectory*. 
+
+
+
+The return will provide us with an indication of how "good" a series of actions were. This is especially useful if we have some way of predicting the future return after taking an action - we can measure how much the expected reward will be from looking the predicted return.
 
 Generally, the return $G$ over $N$ timesteps is defined as
 
@@ -116,9 +122,11 @@ There are two main reasons to do this:
 
 We can generalize the expression for our return to consider a broader sequence of actions. Instead of a specific, defined trajectory of actions, we can define our return as an expected value over the action probabilities. If we choose some starting state $S_0$, we can define the expected return from that state following some policy $\pi$ as:
 
-$$\mathbb E$$
+$$\mathbb E_{\pi}[G_t]$$
 
 ## Algorithms
+
+I recommend going through the algorithms in the order listed here, since the later algorithms often extend concepts from prior ones.
 
 ### Q-Learning
 
@@ -126,10 +134,12 @@ $$\mathbb E$$
 
 ### Monte-Carlo Policy Gradients (REINFORCE)
 
+
+
 ### DDQN
 
-In RL, there is a tradeoff between *exploration* and *exploitation*. Initially, we want our agent to *explore* different options. By maximizing exploration in the early stages, we can guarantee that our agent will find the best possible action with the highest reward. 
+### Actor-Critic & A2C
 
 ### PPO
 
-### Actor-Critic & A2C
+## Sources
