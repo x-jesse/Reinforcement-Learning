@@ -20,6 +20,7 @@ Hi there 👋😃! This repo is a collection of RL algorithms implemented from s
     - [DDQN]()
     - [PPO](#ppo)
     - [Actor-Critic & A2C](#actor-critic--a2c)
+4. [References](#references)
 
 ## Usage
 
@@ -142,4 +143,14 @@ I recommend going through the algorithms in the order listed here, since the lat
 
 ### PPO
 
-## Sources
+## References
+
+Sutton, R. S., & Barto, A. G. (2020). Reinforcement Learning: An Introduction (2nd ed.). Retrieved from http://www.incompleteideas.net/book/RLbook2020.pdf
+
+OpenAI. (n.d.). Spinning Up in Deep RL. Retrieved from https://spinningup.openai.com/en/latest/spinningup/rl_intro.html
+
+Weng, L. (n.d.). Lil'Log. Retrieved from https://lilianweng.github.io/
+
+Yang, E. (n.d.). PPO for Beginners. GitHub repository. Retrieved from https://github.com/ericyangyu/PPO-for-Beginners
+
+PyTorch. (n.d.). Reinforcement Learning (PPO) tutorial. Retrieved from https://pytorch.org/tutorials/intermediate/reinforcement_ppo.html
