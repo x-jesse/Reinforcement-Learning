@@ -154,3 +154,5 @@ Weng, L. (n.d.). Lil'Log. Retrieved from https://lilianweng.github.io/
 Yang, E. (n.d.). PPO for Beginners. GitHub repository. Retrieved from https://github.com/ericyangyu/PPO-for-Beginners
 
 PyTorch. (n.d.). Reinforcement Learning (PPO) tutorial. Retrieved from https://pytorch.org/tutorials/intermediate/reinforcement_ppo.html
+
+Johnnycode8. (n.d.). gym_solutions. GitHub repository. Retrieved from https://github.com/johnnycode8/gym_solutions
