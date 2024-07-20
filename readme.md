@@ -35,9 +35,13 @@ pip install -r requirements.txt
 
 # Introduction
 
-Reinforcement learning is a broad topic - and I can't possibly fit that much information in what is supposed to be an "Intro to RL". So unfortunately, some topics that are important, but potentially unnecessary for a basic understanding have been cut 😢. For those interested, I highly recommend checking out some other sources, especially [this book](http://incompleteideas.net/book/the-book-2nd.html) 😪 :
-- [Reinforcement Learning: An Introduction](http://incompleteideas.net/book/the-book-2nd.html)
+Reinforcement learning is a broad topic - and I can't possibly fit that much information in what is supposed to be an "Intro to RL". So unfortunately, some topics that are important, but potentially unnecessary for a basic understanding have been cut 😢. For those interested, I highly recommend checking out some other sources, especially this book: [Reinforcement Learning: An Introduction](http://incompleteideas.net/book/the-book-2nd.html). I've also listed some other helpful resources below 😪 :
 - [Spinning Up in Deep RL!](https://spinningup.openai.com/en/latest/)
+- []
+
+Please feel free to refer to the [glossary]() if there are any unfamiliar concepts or terminology. 
+
+Happy learning <3 !
 
 ## What is RL?
 
@@ -129,7 +133,7 @@ $$\mathbb E_{\pi}[G_t]=\sum_{}\sum_{t=0}^N\gamma^t R_t$$
 
 # Algorithms
 
-I recommend going through the algorithms in the order listed here, since the later algorithms often extend concepts from prior ones.
+This section gives a high-level overview of the RL algorithms implemented in this repo. Please see the individual folders and their readmes for in-depth explanations of the code, including derivations and theory. I recommend going through the algorithms in the order listed here, since the later algorithms often extend concepts from prior ones.
 
 ## Q-Learning
 
@@ -143,9 +147,17 @@ Q-learning is a RL method that progressively builds estimates of the *value* of 
 
 ## SARSA
 
+### Intuition
+
+### Implementation
+
 ## Monte-Carlo Policy Gradients (REINFORCE)
 
+### Intuition
 
+### Implementation
+
+Please see the module for an in-depth overview: [reinforce.md](https://github.com/x-jesse/Reinforcement-Learning-Guide/blob/main/REINFORCE/reinforce.md)
 
 ## DDQN
 
