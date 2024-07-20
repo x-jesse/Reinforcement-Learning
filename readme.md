@@ -35,7 +35,7 @@ pip install -r requirements.txt
 
 # Introduction
 
-Reinforcement learning is a broad topic - and I can't possibly fit that much information in what is supposed to be an "Intro to RL". So unfortunately, some topics that are important, but potentially unnecessary for a basic understanding have been cut 😢. For those interested, I highly recommend checking out some other sources 😪 :
+Reinforcement learning is a broad topic - and I can't possibly fit that much information in what is supposed to be an "Intro to RL". So unfortunately, some topics that are important, but potentially unnecessary for a basic understanding have been cut 😢. For those interested, I highly recommend checking out some other sources, especially [this book](http://incompleteideas.net/book/the-book-2nd.html) 😪 :
 - [Reinforcement Learning: An Introduction](http://incompleteideas.net/book/the-book-2nd.html)
 - [Spinning Up in Deep RL!](https://spinningup.openai.com/en/latest/)
 
