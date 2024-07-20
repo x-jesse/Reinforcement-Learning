@@ -33,17 +33,17 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Introduction
+# Introduction
 
 Reinforcement learning is a broad topic - and I can't possibly fit that much information in what is supposed to be an "Intro to RL". So unfortunately, some topics that are important, but potentially unnecessary for a basic understanding have been cut 😢. For those interested, I highly recommend checking out some other sources 😪 :
 - [Reinforcement Learning: An Introduction](http://incompleteideas.net/book/the-book-2nd.html)
 - [Spinning Up in Deep RL!](https://spinningup.openai.com/en/latest/)
 
-### What is RL?
+## What is RL?
 
 Reinforcement learning, as the name suggests, is the process by which an agent learns through "reinforcing" "good" behaviour. When the agent performs the way we want it to, we provide some quantifiable reward to further encourage this behaviour in the future. If the agent acts undesirably, we "punish" it by providing it with substantially less, or even negative rewards. Just like teaching a poorly-behaved child, we hope that by continually rewarding the agent when it performs well, it will learn to act in a way that is appropriate for our needs 😮.
 
-### The Agent, State, and Environment
+## The Agent, State, and Environment
 
 RL has several key components that operate in a continuous cycle: the ***agent***, which will perform some action; the ***state***, which represents the current status of the agent relative to its environment; and the ***environment***, which respresents the surrounding world that our agent will act in. To take a more familiar example, imagine teaching an RL agent to play Mario 🪠. Your agent would be the character - Mario, your envrionment would be the level itself, and your state might track information about Mario's current position, HP, velocity, etc. 🎮
 
@@ -63,11 +63,11 @@ States that result in termination are called *terminal states*. Termination usua
 
 The duration of time from the agent's inception to it reaching a terminal state is called an ***episode***. In the Mario example, an episode may correlate to the start of a level until the agent either completes the level or dies in the process. Upon reaching a terminal state, we then place the agent back at the beginning for it to repeat the process again, until it learns how to consistently complete the task 🥂. 
 
-### The RL Problem
+## The RL Problem
 
 The central problem that RL tries to solve is a question of optimization: how can the agent maximize the amount the of reward it receives? In other words, what is the optimal course of action that the agent should take to maximize the reward? The decision model that the agent uses to determine its course of action in any given state is called the ***policy***. By extension, the decision model that yields the highest reward is called the ***optimal policy***. Our goal is to find this optimal policy - if we can determine the optimal policy, or at least a close approximation, then we will have successfully solved our environment 💥.
 
-### Exploration vs Exploitation
+## Exploration vs Exploitation
 
 There is a tradeoff between *exploration* and *exploitation* in RL. To find the optimal policy, our agent needs to strike a balance between *exploring* the environment and *exploiting* its experience. In other words, we need to choose when to try new things and when to take advantage of our learned knowledge. Our agent cannot spend all its time exploring, or else it will never get to use the knowledge it's learned. Likewise, it needs to explore to gain knowledge, since it starts off with no information about the environment. 
 
@@ -75,9 +75,9 @@ Policies that only encourage exploitation are called *greedy* policies, since we
 
 The exploration vs exploitation is a well-explored (haha) problem in RL. If you'd like to learn more, the [multi-armed bandit](https://en.wikipedia.org/wiki/Multi-armed_bandit) problem is a good place to start.
 
-## Definitions
+# Definitions
 
-We begin by defining the state, action, and reward at some timestep $t$ to be $S_t, A_t,$ and $R_t$, respectively. In general, when the agent takes some action $A_t$ it has a fixed probability of moving to some state $S_{t+1}$ and receiving a reward $R_{t}$. It is important to note that by this definition, the reward is received upon *leaving* a state, and not just reaching it.
+We begin by defining the state, action, and reward at some timestep $t$ to be $S_t, A_t,$ and $R_t$, respectively. In general, when the agent takes some action $A_t$ at timestep $t$ it has a fixed probability of moving to some state $S_{t+1}$ and receiving a reward $R_{t}$. It is important to note that by this definition, the reward is received upon *leaving* a state, and not just reaching it.
 
 We define the policy $\pi$ that the agent uses to select its actions as a function of state $\pi(s)$, where the action $A_t$ is selected by passing the current state $S_t$ into $\pi$. 
 
@@ -92,6 +92,8 @@ $$A_t\sim\pi(S_t)$$
 Additionally, it is useful to define the probability of selecting a specific action at a given state, written as: 
 
 $$p(A_t)=\pi(A_t|S_t)$$
+
+Note that regardless of which action we take here from $S_t$, we will still receive the same reward $R_t$, since we offer the reward after *leaving* some state $S_t$. 
 
 Or more generally:
 
@@ -125,25 +127,33 @@ We can generalize the expression for our return to consider a broader sequence o
 
 $$\mathbb E_{\pi}[G_t]=\sum_{}\sum_{t=0}^N\gamma^t R_t$$
 
-## Algorithms
+# Algorithms
 
 I recommend going through the algorithms in the order listed here, since the later algorithms often extend concepts from prior ones.
 
-### Q-Learning
+## Q-Learning
 
-### SARSA
+### Intuition
 
-### Monte-Carlo Policy Gradients (REINFORCE)
+Q-learning is a RL method that progressively builds estimates of the *value* of each state over successive episodes. Each time our agent completes an episode, we update our our estimated values for each state based on our experiences. Over time, we hope that our estimates will provide better and better approximations of the *true values* for each state - we refer to this process as *convergence*.
+
+### Implementation
 
 
 
-### DDQN
+## SARSA
 
-### Actor-Critic & A2C
+## Monte-Carlo Policy Gradients (REINFORCE)
 
-### PPO
 
-## References
+
+## DDQN
+
+## Actor-Critic & A2C
+
+## PPO
+
+# References
 
 Sutton, R. S., & Barto, A. G. (2020). Reinforcement Learning: An Introduction (2nd ed.). Retrieved from http://www.incompleteideas.net/book/RLbook2020.pdf
 
