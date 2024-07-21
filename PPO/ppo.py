@@ -40,14 +40,13 @@ args = parser.parse_args()
 # we can set our model to run on GPU or Apple Silicon if it's available
 # better hardware = faster training
 device = "cpu"
-# if torch.cuda.is_available():
-#     device = "cuda"
+if torch.cuda.is_available():
+    device = "cuda"
 # elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
 #     device = "mps"
 
 env = gym.make('Pendulum-v1', render_mode='human' if args.human else None)
 state, _ = env.reset()
-print(env.observation_space.shape, env.action_space.shape)
 act_dim = env.action_space.shape[0]
 obs_dim = env.observation_space.shape[0]
 actor = FeedForward(obs_dim, act_dim)
@@ -56,7 +55,6 @@ critic = FeedForward(obs_dim, act_dim)
 critic.to(device)
 
 covar = torch.diag(torch.full(size=env.action_space.shape, fill_value=0.5, device=device))
-# print(covar)
 
 # gather trajectories
 """
@@ -76,6 +74,8 @@ k = 0
 # sample some trajectories
 while k < batch_size:
     # step through the episode
+    state, _ = env.reset()
+
     for tstep in range(max_timesteps):
         state = torch.tensor(state, device=device)
         states.append(state)
