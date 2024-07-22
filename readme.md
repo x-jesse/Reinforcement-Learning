@@ -2,6 +2,12 @@
 
 Hi there 👋😃! This repo is a collection of RL algorithms implemented from scratch using PyTorch with the aim of solving a variety of environments from the Gymnasium library. The purpose is to provide both a theoretical and practical understanding of the principles behind reinforcement learning to someone with little to no experience in machine learning 😎🤏 🕶️🤏 😉. 
 
+I'm also writing a Medium series to go along with this repo that provides a more thorough, theoretical explanation of RL concepts. The README here is an abridged version of my Medium series. 
+
+Introduction to Reinforcement Learning:
+>[PART I: Reinforcement Learning & Markov Decision Processes]()<br>
+*Estimated publication date: Aug 10 2024*
+
 ## Table of Contents 📓
 
 1. [Introduction](#introduction)
