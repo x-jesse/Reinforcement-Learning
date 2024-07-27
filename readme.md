@@ -23,19 +23,34 @@ I'm also writing a Medium series to go along with this repo that provides a more
     - [Q-Learning](#q-learning)
     - [SARSA](#sarsa)
     - [Monte-Carlo Policy Gradient (REINFORCE)](#monte-carlo-policy-gradients-reinforce)
-    - [DDQN]()
+    - [DDQN](#ddqn)
     - [PPO](#ppo)
     - [Actor-Critic & A2C](#actor-critic--a2c)
 4. [References](#references)
 
 ## Usage
 
-TODO: Setup argparse for easy runtime access
+Generally we want to setup a virtual environment to isolate our dependencies - it's good practice.
 
 If on Mac/Linux:
 ```
 python -m venv ./venv
 source venv/bin/activate 
+pip install -r requirements.txt
+```
+Windows:
+```
+python -m venv ./venv
+./venv/Scripts/activate.bat
+pip install -r requirements.txt
+```
+If you get a permissions error on Windows Powershell, run your terminal as administrator and run the command:
+```
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+And try activating the venv again:
+```
+./venv/Scripts/activate.bat
 pip install -r requirements.txt
 ```
 
