@@ -30,6 +30,22 @@ I'm also writing a Medium series to go along with this repo that provides a more
 
 ## Usage
 
+This guide is a series of self-contained modules implementing various RL algorithms from scratch. I plan to continuously update it with more algorithms once I finish implementing the current ones :). If you're interested in any algorithm in particular, I recommend going into the specific folder and looking through both the code and the readme. 
+
+Each folder contains the `.py` implementation file of the algorithm in PyTorch, along with a README file covering the theory and higher-level description behind each algorithm. As of writing this, only REINFORCE is fully implemented, though more are in-progress :P.
+
+All modules use OpenAI Gymnasium for training and testing. The official documentation for OpenAI Gymnasium can be found [here](). You can train each individual algorithm by running the python file, eg. 
+
+```python REINFORCE/reinforce.py```
+
+Or alternatively, if you want better insight into the training process, you can render each environment during training using
+
+```python REINFORCE/reinforce.py --render-mode human```
+
+Note that rendering the environment will slow down the training processs.
+
+### Setup
+
 Generally we want to setup a virtual environment to isolate our dependencies - it's good practice.
 
 If on Mac/Linux:

@@ -40,6 +40,7 @@
     Happy learning! <3
 
 """
+from argparse import ArgumentParser
 import gymnasium as gym
 import matplotlib.pyplot as plt
 import numpy as np
@@ -96,8 +97,13 @@ if torch.cuda.is_available():
 elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
     device = "mps"
 
+# sets a display mode for the environment - if you want to see 
+parser = ArgumentParser()
+parser.add_argument('-r', '--render-mode', default=None)
+args = parser.parse_args()
+
 # creates the environment
-env = gym.make('CartPole-v1', render_mode=None)
+env = gym.make('CartPole-v1', render_mode=args.render_mode)
 state, _ = env.reset()
 
 # initializes our policy
@@ -149,9 +155,11 @@ for n_epoch in range(max_eps):
     
     """
     cum_reward = 0 # we obv can't use the word return in python, so we'll call it cumulative reward instead
-    states, rewards = [], []
+    # recall that REINFORCE is a Monte Carlo method, so we need to collect information from an entire episode
+    # before making updates to our policy
+    states, rewards = [], [] # keep track of states and rewards
     saved_log_probs = [] # track the log probabilities of the actions we take
-    state, info = env.reset()
+    state, _ = env.reset()
 
     # loop until our episode terminates
     while True:
@@ -217,8 +225,6 @@ for n_epoch in range(max_eps):
     timestep up to the end state. In other words, it is a summation of values from that state up until
     episode termination. 
 
-
-
     """
     for r in rewards[::-1]:
         # computes the discounted reward at that timestep
@@ -256,6 +262,7 @@ for n_epoch in range(max_eps):
     optimizer.step()
 
 np.save("ref", np.array(plot_info))
+print(plot_info)
 torch.save(policy, "policy")
 
 env.close()
