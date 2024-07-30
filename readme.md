@@ -16,7 +16,7 @@ I'm also writing a Medium series to go along with this repo that provides a more
     - [Exploration vs. Exploitation](#exploration-vs-exploitation)
     - [The RL Problem](#the-rl-problem)
 2. [Formal Definitions](#definitions)
-    - [State, Action, and Reward]()
+    - [State, Action, and Reward](#state-action--reward)
     - [State-Value and Action-Value]()
     - [Policy Gradient Theorem]()
 3. [Algorithms](#algorithms)
@@ -37,11 +37,15 @@ Each folder contains the `.py` implementation file of the algorithm in PyTorch, 
 
 All modules use OpenAI Gymnasium for training and testing. The official documentation for OpenAI Gymnasium can be found [here](). You can train each individual algorithm by running the python file, eg. 
 
-```python REINFORCE/reinforce.py```
+```
+python REINFORCE/reinforce.py
+```
 
 Or alternatively, if you want better insight into the training process, you can render each environment during training using
 
-```python REINFORCE/reinforce.py --render-mode human```
+```
+python REINFORCE/reinforce.py --render-mode human
+```
 
 Note that rendering the environment will slow down the training processs.
 
@@ -120,7 +124,11 @@ The exploration vs exploitation is a well-explored (haha) problem in RL. If you'
 
 # Definitions
 
-We begin by defining the state, action, and reward at some timestep $t$ to be $S_t, A_t,$ and $R_t$, respectively. In general, when the agent takes some action $A_t$ at timestep $t$ it has a fixed probability of moving to some state $S_{t+1}$ and receiving a reward $R_{t}$. It is important to note that by this definition, the reward is received upon *leaving* a state, and not just reaching it.
+This section dives into the mathematical formulation behind RL concepts - if you're looking for a more intuitive explanation I strongly recommend checking out my Medium series.
+
+## State, Action, & Reward
+
+We begin by defining the state, action, and reward at some timestep $t$ to be $S_t, A_t,$ and $R_t$, respectively. In general, when the agent takes some action $A_t$ at timestep $t$ it has a probability of moving to some state $S_{t+1}$ and receiving a reward $R_{t+1}$.
 
 We define the policy $\pi$ that the agent uses to select its actions as a function of state $\pi(s)$, where the action $A_t$ is selected by passing the current state $S_t$ into $\pi$. 
 
@@ -136,17 +144,17 @@ Additionally, it is useful to define the probability of selecting a specific act
 
 $$P(A_t)=\pi(A_t|S_t)$$
 
-Note that regardless of which action we take here from $S_t$, we will still receive the same reward $R_t$, since we offer the reward after *leaving* some state $S_t$. 
-
 Or more generally:
 
 $$p(a)=\pi(a|s)$$
 
 As we train our policy, we would eventually like it to be biased towards selecting the optimal action from any given state over other possibilities.
 
-Next, we would to like to consider the cumulative reward obtained from a series of actions, also called the *return*. For this purpose, it is useful to define the probability of selecting a series of actions, called a *trajectory*. 
+Next, we would to like to consider the cumulative reward obtained from a series of actions, also called the *return*. For this purpose, it is useful to define the probability of selecting a series of actions.
 
+We refer to some sequence of actions as a *trajectory* and each action taken with that trajectory as a *step*. In other words, a trajectory of $T$ steps is equivalent to taking any action $T$ number of times. The probability of some specific $T$ step trajectory $\tau$ occurring for a given policy $\pi$ is denoted as
 
+$$P(\tau|\pi)=\prod^{T-1}_{t=0}P(s_{t+1}|s_t, a_t)\pi(a_t|s_t)$$
 
 The return will provide us with an indication of how "good" a series of actions were. This is especially useful if we have some way of predicting the future return after taking an action - we can measure how much the expected reward will be from looking the predicted return.
 
@@ -165,10 +173,6 @@ There are two main reasons to do this:
 1. We can encourage our agent to priortize present gain over future reward. If our discount factor is >=1, our agent will give equal or more consideration to future reward, which might not result in it taking the optimal action for the current state.
 
 2. We ensure that our reward series will converge. For environments where the termination condition is not defined and the agent may continue indefinitely, it is important to ensure that our return is finite and does not approach infinity.
-
-We refer to some sequence of actions as a *trajectory* and each action taken with that trajectory as a *step*. In other words, a trajectory of $T$ steps is equivalent to taking any action $T$ number of times. The probability of some specific $T$ step trajectory $\tau$ occurring for a given policy $\pi$ is denoted as
-
-$$P(\tau|\pi)=\prod^{T-1}_{t=0}P(s_{t+1}|s_t, a_t)\pi(a_t|s_t)$$
 
 This expression is the joint probability of the action selection and state transition, multiplied over however many timesteps there are.
 
