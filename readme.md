@@ -115,7 +115,7 @@ $$A_t\sim\pi(S_t)$$
 
 Additionally, it is useful to define the probability of selecting a specific action at a given state, written as: 
 
-$$p(A_t)=\pi(A_t|S_t)$$
+$$P(A_t)=\pi(A_t|S_t)$$
 
 Note that regardless of which action we take here from $S_t$, we will still receive the same reward $R_t$, since we offer the reward after *leaving* some state $S_t$. 
 
@@ -147,9 +147,15 @@ There are two main reasons to do this:
 
 2. We ensure that our reward series will converge. For environments where the termination condition is not defined and the agent may continue indefinitely, it is important to ensure that our return is finite and does not approach infinity.
 
+We refer to some sequence of actions as a *trajectory* and each action taken with that trajectory as a *step*. In other words, a trajectory of $T$ steps is equivalent to taking any action $T$ number of times. The probability of some specific $T$ step trajectory $\tau$ occurring for a given policy $\pi$ is denoted as
+
+$$P(\tau|\pi)=\prod^{T-1}_{t=0}P(s_{t+1}|s_t, a_t)\pi(a_t|s_t)$$
+
+This expression is the joint probability of the action selection and state transition, multiplied over however many timesteps there are.
+
 We can generalize the expression for our return to consider a broader sequence of actions. Instead of a specific, defined trajectory of actions, we can define our return as an [expected value]() over the action probabilities. If we choose some starting state $S_0$, we can define the expected return from that state following some policy $\pi$ as:
 
-$$\mathbb E_{\pi}[G_t]=\sum_{}\sum_{t=0}^N\gamma^t R_t$$
+$$\mathbb E_{\pi}[G_t]=P(\tau|s_t)\sum_{t=0}^N\gamma^t R_t$$
 
 # Algorithms
 
