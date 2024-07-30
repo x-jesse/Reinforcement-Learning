@@ -26,7 +26,8 @@ I'm also writing a Medium series to go along with this repo that provides a more
     - [DDQN](#ddqn)
     - [PPO](#ppo)
     - [Actor-Critic & A2C](#actor-critic--a2c)
-4. [References](#references)
+4. [Conclusion]()
+5. [References](#references)
 
 ## Usage
 
@@ -44,9 +45,9 @@ Or alternatively, if you want better insight into the training process, you can 
 
 Note that rendering the environment will slow down the training processs.
 
-### Setup
+## Setup
 
-Generally we want to setup a virtual environment to isolate our dependencies - it's good practice.
+Generally we want to setup a [virtual environment]() to isolate our dependencies - it's good practice.
 
 If on Mac/Linux:
 ```
@@ -81,15 +82,15 @@ Happy learning <3 !
 
 ## What is RL?
 
-Reinforcement learning, as the name suggests, is the process by which an agent learns through "reinforcing" "good" behaviour. When the agent performs the way we want it to, we provide some quantifiable reward to further encourage this behaviour in the future. If the agent acts undesirably, we "punish" it by providing it with substantially less, or even negative rewards. Just like teaching a poorly-behaved child, we hope that by continually rewarding the agent when it performs well, it will learn to act in a way that is appropriate for our needs 😮.
+Reinforcement learning, as the name suggests, is the process by which an agent learns through reinforcing "good" behaviour. When the agent performs the way we want it to, we provide some quantifiable reward to further encourage this behaviour in the future. If the agent acts undesirably, we "punish" it by providing it with substantially less, or even negative rewards. Just like teaching a poorly-behaved child, we hope that by continually rewarding the agent when it performs well, it will learn to act in a way that is appropriate for our needs 😮.
 
 ## The Agent, State, and Environment
 
-RL has several key components that operate in a continuous cycle: the ***agent***, which will perform some action; the ***state***, which represents the current status of the agent relative to its environment; and the ***environment***, which respresents the surrounding world that our agent will act in. To take a more familiar example, imagine teaching an RL agent to play Mario 🪠. Your agent would be the character - Mario, your envrionment would be the level itself, and your state might track information about Mario's current position, HP, velocity, etc. 🎮
+RL has several key components that operate in a continuous cycle: the ***agent***, which will perform some action; the ***state***, which represents the current status of the agent relative to its environment; and the ***environment***, which respresents the surrounding world that our agent will act in. To take a more familiar example, imagine teaching an RL agent to play Mario 🪠. Your agent would be the character - Mario, your envrionment would be the level itself, and your state might track information about Mario's current position, HP, velocity, etc. 🎮 In other words, the environment is anything that the agent *cannot arbitrarily* change. 
 
 <p align="center"><img src="./visuals/super-mario.png" width=400></p>
 
-Each time our agent acts, it may change its state in some way. (Eg. If Mario jumps, he will gain some upward velocity. If he tries to jump again while in the air - assuming no double jump - nothing will happen.) Moving to a state has the potential to give some reward. This results in general feedback loop of *state* $\rightarrow$ *action* $\rightarrow$ *reward* $\rightarrow$ *state* $\rightarrow$ *action* $\rightarrow$ ... If our agent manages to beat the level, we should give it a reward and terminate the process 🍿. 
+Our agent can only interact with our environment by taking some action, and each time our agent acts, it may change its state in some way. (Eg. If Mario jumps, he will gain some upward velocity. If he tries to jump again while in the air - assuming no double jump - nothing will happen.) Moving to a state has the potential to give some reward. This results in general feedback loop of *state* $\rightarrow$ *action* $\rightarrow$ *reward* $\rightarrow$ *state* $\rightarrow$ *action* $\rightarrow$ ... If our agent manages to beat the level, we should give it a reward and terminate the process 🍿. 
 
 <p align="center">
 <img src="./visuals/rl-cycle.png" width=400>
@@ -107,7 +108,7 @@ The duration of time from the agent's inception to it reaching a terminal state 
 
 The central problem that RL tries to solve is a question of optimization: how can the agent maximize the amount the of reward it receives? In other words, what is the optimal course of action that the agent should take to maximize the reward? The decision model that the agent uses to determine its course of action in any given state is called the ***policy***. By extension, the decision model that yields the highest reward is called the ***optimal policy***. Our goal is to find this optimal policy - if we can determine the optimal policy, or at least a close approximation, then we will have successfully solved our environment 💥.
 
-We can model our decision process as a *Markov decision process* (MDP), which introduces an additional *transitional probability* to our environment. Instead of deterministically moving from one state to another, each time we take some action we move to subsequent states based on some transitional probability $P(s_{t+1}|s_t,a_t)$. That is, we may move to state $s'$ from $s$ after taking an action $a$ with a probability of $P(s'|s,a)$ and move to any other state with a probability $1-P(s'|s,a)$.
+>We can model our decision process as a *Markov decision process* (MDP), which introduces an additional *transitional probability* to our environment. Instead of deterministically moving from one state to another, each time we take some action we move to subsequent states based on some transitional probability $P(s_{t+1}|s_t,a_t)$. That is, we may move to state $s'$ from $s$ after taking an action $a$ with a probability of $P(s'|s,a)$ and move to any other state with a probability $1-P(s'|s,a)$.
 
 ## Exploration vs Exploitation
 
