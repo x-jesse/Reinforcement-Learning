@@ -3,6 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.distributions import MultivariateNormal
+from collections import namedtuple
 import gymnasium as gym
 
 
@@ -67,10 +68,10 @@ covar = torch.diag(torch.full(size=env.action_space.shape, fill_value=0.5, devic
 max_timesteps = 200
 batch_size = 600
 
-states, rewards = [], []
-saved_log_probs = []
+Batch = namedtuple('Batch', ['states', 'rewards', 'actions'])
 k = 0
 
+states, saved_log_probs, rewards = [], [], []
 # sample some trajectories
 while k < batch_size:
     # step through the episode
@@ -95,4 +96,9 @@ while k < batch_size:
             break
         state = new_state
 
-print(states, saved_log_probs, rewards)
+batch = Batch(
+    states=torch.tensor(states, device=device), 
+    actions=torch.tensor(saved_log_probs, device=device), 
+    rewards=torch.tensor(rewards, device=device))
+
+
