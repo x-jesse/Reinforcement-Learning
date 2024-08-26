@@ -6,7 +6,7 @@ I'm also writing a Medium series to go along with this repo that provides a more
 
 **Introduction to Reinforcement Learning:**
 >[PART I: Reinforcement Learning & Markov Decision Processes]()<br>
-*Estimated publication date: Aug 24 2024*
+*Estimated publication date: Sep 1 2024*
 
 ## Table of Contents 📓
 
