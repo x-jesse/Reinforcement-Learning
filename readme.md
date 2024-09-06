@@ -4,9 +4,7 @@ Hi there 👋😃! This repo is a collection of RL algorithms implemented from s
 
 I'm also writing a Medium series to go along with this repo that provides a more thorough, theoretical explanation of RL concepts. The README here is an abridged version of my Medium series - for a gentler introduction into RL, please check out my series :).
 
-**Introduction to Reinforcement Learning:**
->[PART I: Reinforcement Learning & Markov Decision Processes]()<br>
-*Estimated publication date: Sep 1 2024*
+>[An Intuitive Introduction to Reinforcement Learning, Part I](https://medium.com/towards-data-science/an-intuitive-introduction-to-reinforcement-learning-part-i-d81512f5e25c)<br>
 
 ## Table of Contents 📓
 
